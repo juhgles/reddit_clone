@@ -1,0 +1,12 @@
+<h1>Sub title: <%= @sub.title %></h1>
+<ul>
+  <% @sub.posts.try(:each) do |post| %>
+    <li> <%= link_to post.title, post_url(post) %> </li>
+  <% end %>
+</ul>
+
+<%= button_to "Back To All Subs", subs_url, method: :get %>
+<% if current_user.id == @sub.user_id %>
+  <%= link_to "Edit Sub", edit_sub_url %>
+<% end %>
+<%= button_to "Add Post", new_post_url, method: :get %>

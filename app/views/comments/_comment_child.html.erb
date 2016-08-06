@@ -1,0 +1,15 @@
+<p>
+<%= comment.user.username %>
+<%= comment.content %>
+<%= link_to 'reply', comment_url(comment) %>
+</p>
+<ul>
+<% comment.child_comments.each do |child| %>
+
+  <li>
+
+    <%= render 'comments/comment_child', comment: child%>
+  </li>
+<% end%>
+
+</ul>
